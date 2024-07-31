@@ -1,0 +1,17 @@
+service: email-service
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-west-2
+
+functions:
+  sendEmail:
+    handler: handler.sendEmail
+    events:
+      - http:
+          path: send-email
+          method: post
+
+plugins:
+  - serverless-offline
